@@ -9,7 +9,7 @@
         </h1>
 
         <div class="cont">
-            <button class="record">
+            <button class="record" @click="clickRecord">
                 Record
             </button>
 
@@ -23,11 +23,27 @@
 </template>
   
 <script>
+  import { initializeApp } from "firebase/app";   
+  import { getFirestore } from "firebase/firestore";
+  import { doc, setDoc } from "firebase/firestore"; 
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD78q7WLGsIT2QkLvXvnGMivBP9FGuYw0M",
+    authDomain: "clickclickclick-f70d5.firebaseapp.com",
+    projectId: "clickclickclick-f70d5",
+    storageBucket: "clickclickclick-f70d5.appspot.com",
+    messagingSenderId: "536358588531",
+    appId: "1:536358588531:web:babea68e8b787e16b39a06",
+    measurementId: "G-TTTRDV9V6Y"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  
   
   export default {
     name: 'GameFinish',
-
-    props: ['showFinish', 'sendScore'],
+    props: ['showFinish', 'sendScore', 'uidOfChild', 'emailOfChild'],
 
     data() {
             return {
@@ -35,8 +51,24 @@
         },
   
     methods: {
+    async sendData(email) {
+
+        await setDoc(doc(db, "users", this.uidOfChild), {
+            email: email,
+            score: this.sendScore
+        });
+
+    },
+        
       restart() {
         console.log('restart');
+        this.$emit("clickRestart");
+      },
+
+      clickRecord() {
+        console.log(this.uidOfChild);
+
+        this.sendData(this.emailOfChild);
         this.$emit("clickRestart");
       }
     },
@@ -62,6 +94,7 @@
         text-align: center;
 
         font-family: 'Bebas Neue', sans-serif;
+        color: black;
     }
 
     .cont {

@@ -11,7 +11,7 @@
 
 
         <div class="button_cont">
-            <img src="#" @click="count_up" class="button">
+            <img src="../assets/button.png" @click="count_up" class="button">
         </div>
 
 
@@ -42,6 +42,9 @@
                 if (!this.gameFinish) {
                     this.count = this.count + 1;
                 }
+
+                var click = new Audio('../assets/click_sound.mp3');
+                click.play();
             },
 
             countDown() {
@@ -94,8 +97,6 @@
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300&display=swap');
 
     .button_cont {
-        border: 2px solid red;
-
         display: flex;
         justify-content: center;
 
@@ -116,6 +117,9 @@
 
         font-size: 3em;
         font-family: 'Bebas Neue', sans-serif;
+
+        color: black;
+
     }
   
   </style>

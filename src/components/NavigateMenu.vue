@@ -1,11 +1,11 @@
 <template>
     <div class="nav_container">
 
-        <div class="record_btn">
+        <div @click="record" class="record_btn">
             Records
         </div>
 
-        <div class="exit_btn">
+        <div @click="exit" class="exit_btn">
             Exit
         </div>
 
@@ -15,6 +15,16 @@
 <script>
   export default {
     name: 'NavigateMenu',
+
+    methods: {
+        record() {
+            this.$router.push('/ranking');
+        },
+
+        exit() {
+            this.$router.push('/');
+        }
+    }
   };
 
 </script>
@@ -40,7 +50,4 @@
         padding-right: 30%;
     }
 
-    .exit_btn {
-
-    }
 </style>
