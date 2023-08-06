@@ -9,6 +9,10 @@
             Exit
         </div>
 
+        <!-- <audio controls autoplay id="audio" style="display: none;">
+            <source src="../assets/background.mp3">
+        </audio> -->
+
     </div>
 </template>
 

@@ -1,13 +1,13 @@
 <template>
     <div id="main">
   
-      <label for="email">Email:</label>
-      <input type="text" id="email" name="email" v-model="email"><br><br>
-  
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password " v-model="password"><br><br>
-  
-      <button @click="signIn" style="margin-left: 10px;">Sign In</button>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" v-model="email"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password " v-model="password"><br><br>
+
+        <button @click="signIn" style="margin-left: 10px;">Sign In</button>
   
     </div>
   </template>

@@ -14,6 +14,10 @@
             <img src="../assets/button.png" @click="count_up" class="button">
         </div>
 
+        <audio controls id="audio" style="display: none;">
+            <source src="../assets/click_sound.mp3">
+        </audio>
+
 
     </div>
 </template>
@@ -43,8 +47,14 @@
                     this.count = this.count + 1;
                 }
 
-                var click = new Audio('../assets/click_sound.mp3');
-                click.play();
+                var audio = document.querySelector("audio");
+                audio.play();
+
+                setTimeout(function() {
+                    audio.pause();
+                    audio.currentTime = 0;
+
+                }, 500);
             },
 
             countDown() {
